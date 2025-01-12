@@ -34,6 +34,10 @@
 using namespace std;
 #endif
 
+#ifdef PORTANDROID
+#include "emu_retro.h"
+#endif
+
 std::string retro_base_directory;
 
 #define MEDNAFEN_CORE_NAME_MODULE "pce_fast"
@@ -1198,8 +1202,16 @@ static int HuCLoadCD(const char *bios_path)
 
 static int LoadCD(std::vector<CDIF *> *CDInterfaces)
 {
+#ifdef PORTANDROID
+    std::string bios_path;
+    if(cb_settings.bios_path != nullptr) {
+        bios_path = std::string(cb_settings.bios_path);
+    }else {
+        bios_path = MDFN_MakeFName(MDFNMKF_FIRMWARE, 0, setting_pce_fast_cdbios.c_str() );
+    }
+#else
  std::string bios_path = MDFN_MakeFName(MDFNMKF_FIRMWARE, 0, setting_pce_fast_cdbios.c_str() );
-
+#endif
  LoadCommonPre();
 
  if(!HuCLoadCD(bios_path.c_str()))
