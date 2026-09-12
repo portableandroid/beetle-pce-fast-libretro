@@ -47,7 +47,7 @@ NEED_TREMOR = 1
 NEED_BLIP = 1
 NEED_CD = 1
 NEED_CRC32 = 1
-CORE_DEFINE := -DWANT_PCE_FAST_EMU -DWANT_STEREO_SOUND
+CORE_DEFINE := -DWANT_PCE_FAST_EMU
 HAVE_CHD = 1
 HAVE_CDROM = 0
 
@@ -247,7 +247,7 @@ else ifneq (,$(filter $(platform), ps3 psl1ght))
 	ifeq ($(platform), psl1ght)
 		FLAGS += -D__PSL1GHT__
 	endif
-	FLAGS += -DARCH_POWERPC_ALTIVEC -D__PS3__ -DUSE_LIBRETRO_VFS
+	FLAGS += -DARCH_POWERPC_ALTIVEC -D__PS3__
 	OLD_GCC := 1
 
 # PSP

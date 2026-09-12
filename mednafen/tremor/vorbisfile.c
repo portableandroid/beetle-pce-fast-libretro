@@ -11,7 +11,7 @@
  *                                                                  *
  ********************************************************************
 
- function: stdio-based convenience library for opening/seeking/decoding
+ function: callback-based library for opening/seeking/decoding
  last mod: $Id: vorbisfile.c,v 1.6 2003/03/30 23:40:56 xiphmont Exp $
 
  ********************************************************************/
@@ -26,6 +26,8 @@
 
 #include "os.h"
 #include "misc.h"
+
+#define CHUNKSIZE 1024
 
 #define VORBIS_SEEK_SET 0
 #define VORBIS_SEEK_CUR 1
